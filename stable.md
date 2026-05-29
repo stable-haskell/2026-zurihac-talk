@@ -92,6 +92,7 @@ Case study [Support statically linking executables properly](https://gitlab.hask
   - GHC knows how to link against already compiled packages
   - cabal figures out how to link the *current package*
   - package.conf format
+  - jsem
 - GHC and base
   - only way to ship new base is to bump it in GHC
   - boot libs need patches during a GHC release
@@ -99,6 +100,8 @@ Case study [Support statically linking executables properly](https://gitlab.hask
   - is built for GHC and GHC only
   - is full of hacks and ad-hoc logic
 - GHC and gitlab
+
+=> decisions are often driven by what is convenient for GHC
 
 ## Driving change is hard
 
@@ -110,7 +113,6 @@ Case study [Support statically linking executables properly](https://gitlab.hask
 - general risk aversion
   - why can't we be more bold?
   - why is developing confidence about changes in GHC so hard?
-
 
 ## Impact
 
@@ -158,17 +160,28 @@ Our team includes the engineers who built:
 * GHC's In-Memory Loader & Linker — Dynamic loading infrastructure
 * ...
 
+## What is stable haskell?
+
+* a fork of GHC and cabal
+* follows a specific release branch (9.14 currently)
+* we regularly upstream parts of our changes
+  - at least things we believe are upstreamable
+
 ## What we are working on
+
+::: incremental
 
 * ✅ Migrating to github
 * ✅ Getting rid of Hadrian
 * ✅ RTS split
 *  🚧 cabal-install and cross compilation
 *  🚧 retargetable GHC
-*  🚧 one binary distribution
+*  🚧 GHCup support
 * ⭕️ our own LTS releases
 
-## Deep dive: RTS split
+:::
+
+## Deep dive: RTS split ![](chain-saw.png){#id .class height=42px}
 
 * terrible coupling between GHC, hadrian and RTS
   - `rts.cabal` only describes one library
@@ -183,3 +196,41 @@ Our team includes the engineers who built:
   - the rts is completely described by the cabal file
   - requires changes to cabal
   - GHC can look up the right RTS through the unit ID/package.conf
+
+## Deep dive: cabal-install
+
+* adding explicit cross compilation Support
+  * making the solver stage aware (build vs host) so it can solve independently
+  * ability to specify the compiler for build (`build-tool-depends`) vs host stages
+* removal of "in-place" DB
+  * some ad-hoc nonsense for "local packages"
+  * making it extra hard to package artifacts manually
+* fixing artifacts locations
+  * building now always pre-installs the artifacts into a fake store
+  * we use this to build a bindist
+
+## Deep dive: retargetable GHC
+
+* a cross compiler in stable-haskell is just a package DB
+  * with its own RTS
+* `ghc --target` (same for ghc-pkg etc.)
+* we use the same `ghc`
+  * `<target>-ghc` symlinks point to it
+  * if no `--target` switch given, infer the target from `getProgName`
+* thanks to the RTS split, the compiler can pick the rts in the cross package DB
+
+## Deep dive: GHCup support
+
+* GHCup won't add ad-hoc support for alternative compilers
+* only solution: "Installer DSL"
+* Are we package manager yet?
+  * GHCup doesn't need to "know" about 3rdparty tools
+* Agda, Idris, stable-haskell GHC, purescript, ...
+
+## Deep dive: our own LTS releases
+
+* longer support windows?
+* more backporting?
+* frequent bindist updates on existing platforms?
+  * rebuild against recent libraries
+  * update boot libraries?
