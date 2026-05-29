@@ -88,7 +88,16 @@ Case study [Support statically linking executables properly](https://gitlab.hask
 ## Tight systems coupling
 
 - GHC and cabal
+  - both are handling linking
+  - GHC knows how to link against already compiled packages
+  - cabal figures out how to link the *current package*
+  - package.conf format
+- GHC and base
+  - only way to ship new base is to bump it in GHC
+  - boot libs need patches during a GHC release
 - GHC and hadrian
+  - is built for GHC and GHC only
+  - is full of hacks and ad-hoc logic
 - GHC and gitlab
 
 ## Driving change is hard
@@ -173,3 +182,4 @@ Our team includes the engineers who built:
   - we have 4 real sublibraries for each flavor
   - the rts is completely described by the cabal file
   - requires changes to cabal
+  - GHC can look up the right RTS through the unit ID/package.conf
