@@ -181,7 +181,16 @@ Our team includes the engineers who built:
 
 :::
 
-## Deep dive: RTS split ![](chain-saw.png){#id .class height=42px}
+## Deep dive: Getting rid of Hadrian ![](chain-saw.png){#id .class height=42px}
+
+* building GHC via cabal
+* some glue code in a Makefile still exists
+  * dealing with inter-stage shenanigans
+  * dealing with bindist creation
+  * we plan to get rid of this too at some point
+* it's a bit slower than hadrian at the moment
+
+## Deep dive: RTS split ✂
 
 * terrible coupling between GHC, hadrian and RTS
   - `rts.cabal` only describes one library
@@ -198,6 +207,8 @@ Our team includes the engineers who built:
   - GHC can look up the right RTS through the unit ID/package.conf
 
 ## Deep dive: cabal-install
+
+See [#11179](https://github.com/haskell/cabal/pull/11179)
 
 * adding explicit cross compilation Support
   * making the solver stage aware (build vs host) so it can solve independently
