@@ -85,6 +85,12 @@ Case study [Support statically linking executables properly](https://gitlab.hask
 - why are there no calls for help
   - FreeBSD?
 
+## Tight systems coupling
+
+- GHC and cabal
+- GHC and hadrian
+- GHC and gitlab
+
 ## Driving change is hard
 
 - how to gather consensus
@@ -96,9 +102,6 @@ Case study [Support statically linking executables properly](https://gitlab.hask
   - why can't we be more bold?
   - why is developing confidence about changes in GHC so hard?
 
-  - GHC and cabal
-  - GHC and hadrian
-  - GHC and gitlab
 
 ## Impact
 
