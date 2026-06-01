@@ -122,7 +122,11 @@ Case study [Support statically linking executables properly](https://gitlab.hask
 - everything becomes quietly coupled, because there's no vision of the systems design
 - innovation stalls
 
-# Stable haskell to the rescue
+# The solution
+
+## Stable haskell to the rescue
+
+![](Turtle-rescue.jpg){#id .class height=500px}
 
 ## Prior art and related efforts
 
@@ -245,3 +249,8 @@ See [#11179](https://github.com/haskell/cabal/pull/11179)
 * frequent bindist updates on existing platforms?
   * rebuild against recent libraries
   * update boot libraries?
+
+## Questions?
+
+Now is your chance...
+
