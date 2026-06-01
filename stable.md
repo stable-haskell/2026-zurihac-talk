@@ -140,16 +140,19 @@ Case study [Support statically linking executables properly](https://gitlab.hask
 
 So why have stable Haskell at all?
 
-. . .
-
 * pave the way to maintain a stable Haskell compiler
+  - compiling your existing project against a new GHC should be trivial
   - this requires lots of novel and experimental approaches first
+  - make backporting easier
+* Installing and **updating** GHC should be easy
+  - compiling your existing project against a new GHC should be trivial
+* Quality control
+  - compiling your existing project against a new GHC should be trivial
+  - be clear about what platforms we support
 * develop a vision of the systems design
-  - decoupling of the components
+  - decoupling of the components (base, cabal, hadrian, ...)
 * use a modern approach to hosting, CI and contribution
   - github right now, but who knows
-* allow easy and swift shipping of updates
-  - ghcup
 
 ## Who is stable Haskell?
 
