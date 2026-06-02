@@ -4,25 +4,79 @@
 
 # Introduction
 
-## What is Stable Haskell?
+## Stable Haskell
 
 ![](turtle.jpg){#id .class height=500px}
 
-## State of upstream GHC
+## Why Stable Haskell?
+
+Have you ever wondered:
+
+* why can't I run `cabal install ghc`?
+* why can't I update to a new GHC and compile my existing codebase?
+* why are cross compilers so hard to use?
+* why is contributing to GHC so hard?
+
+## Why Stable Haskell? (pt. 2)
+
+We want to create a Haskell experience that is:
+
+* stable
+  - language, compiler
+  - installation, updates
+  - platform support
+* focuses on the end user
+  - releases are for end users
+  - the user is in control
+* allows rapid development and backporting
+* has a clean foundation
+
+## What is Stable Haskell?
+
+* a fork of GHC and Cabal
+  * regular attempts at upstreaming changes
+  * some changes are too radical to upstream (yet)
+* a project that tries to identify and solve the missing pieces
+  * we're also happy if someone else implements them
+  * we engage rigorously with upstream projects
+  * we're ok to deviate too
+
+# The GHC project
+
+## GHC and stable haskell
+
+* Stable Haskell didn't come into existence in a vacuum
+* we're not bored
+* there are non-technical reasons for the project too
+
+## GHC: A success story
+
+* lots of experts work on GHC
+  * SPJ is still active after many decades
+  * relentless contributions by many companies
+* focused on open collaboration
+  * the academic approach
+  * GHC steering committe
+* a driver for innovation
+* wide adoption in industry
+
+## The dark side of GHC
+
+::: incremental
 
 * lack of stability
-* lack of engineering leadership
+* engineering vision/priorities are often unclear
 * poor contribution experience
 * communication issues
 * too tight coupling between systems/projects
 * driving change is hard
 * 😭
 
+:::
+
 ## Lack of stability
 
 **Upgrading GHC is costly.**
-
-. . .
 
 * GHC ships with changes to base and boot libraries
   - user can't opt out
@@ -33,17 +87,17 @@
   - [GHC stability principles](https://github.com/ghc-proposals/ghc-proposals/blob/master/principles.rst#3GHC-stability-principles)
 * Breaking changes to the bindist
 * Breaking changes to the build system
+* Platforms sometimes come and go (FreeBSD)
 
-## Lack of engineering leadership
+## Engineering vision/priorities
 
-* lots of experts are working on GHC
-* GHC steering committee oversees the language development
-* GHC HQ solves stalemates in engineering disputes
-  - has no active role
-  - decisions in GHC are usually "collective"
-  - someone just has to drive something
-  - someone has to fund something
+* technical debt accumulates steadily
+  * who keeps track of how bad it is?
+  * everyone just works in isolation on different issues
+  * => lack of holistic systems view
 * things develop "organically" instead of strategically
+* the "if we had infinite funding" argument
+* unclear how things are prioritized
 * a possible structure of documenting goals and progress
   - do vs want vs can
 
@@ -53,25 +107,7 @@ See [#26728](https://gitlab.haskell.org/ghc/ghc/-/issues/26728).
 
 . . .
 
-- self-hosted gitlab
-  - poor performance
-  - constant html errors and UI glitches
-  - commenting on large MRs is impossible
-  - ...
-- CI and testsuite
-  - too many levels of CI (validate, full-ci, nightly)
-  - turnaround times of 6+ hours
-  - inability to reproduce failures (no access to runners on obscure architectures)
-- poor merge coordination
-- hadrian
-  - caching doesn't actually work (try changing cabal file or switching branches)
-  - custom build system
-
-## Poor contribution experience (pt. 2)
-
 Case study [Support statically linking executables properly](https://gitlab.haskell.org/ghc/ghc/-/merge_requests/14935):
-
-. . .
 
 - maybe took half a week to implement
 - took ~3 months to get merged
@@ -84,6 +120,7 @@ Case study [Support statically linking executables properly](https://gitlab.hask
 - getting involved in releases is confusing
 - why are there no calls for help
   - FreeBSD?
+- but: some progress wrt release communication
 
 ## Tight systems coupling
 
@@ -120,7 +157,7 @@ Case study [Support statically linking executables properly](https://gitlab.hask
   - whole development process and tools focus on core developers
 - backporting is hard (dealing with flaky tests and spurious CI failures)
 - everything becomes quietly coupled, because there's no vision of the systems design
-- innovation stalls
+- innovation stalls, development slows down
 
 # The solution
 
@@ -136,23 +173,19 @@ Case study [Support statically linking executables properly](https://gitlab.hask
 * GHC breakage inventory at [https://github.com/tomjaguarpaw/tilapia](https://github.com/tomjaguarpaw/tilapia)
 * GHC release management [document](https://gitlab.haskell.org/ghc/ghc-hq/-/blob/main/release-management.mkd?ref_type=heads)
 
-## Motivation
+## The solution
 
-So why have stable Haskell at all?
-
-* pave the way to maintain a stable Haskell compiler
-  - compiling your existing project against a new GHC should be trivial
-  - this requires lots of novel and experimental approaches first
-  - make backporting easier
-* Installing and **updating** GHC should be easy
-  - compiling your existing project against a new GHC should be trivial
-* Quality control
-  - compiling your existing project against a new GHC should be trivial
-  - be clear about what platforms we support
+* Focus on the foundations
+  - do not allow shortcuts
+  - fix all the small little deficiencies/debt (coupling, hadrian, bundled mingw, `Ways`, ...)
+  - each one doesn't seem too serious, but there's a compound effect
 * develop a vision of the systems design
   - decoupling of the components (base, cabal, hadrian, ...)
+* develop a vision of the user experience
+* establish rigorous quality control
+  - compiling your existing project against a new GHC should be trivial
+  - => more "integration" testing
 * use a modern approach to hosting, CI and contribution
-  - github right now, but who knows
 
 ## Who is stable Haskell?
 
@@ -184,7 +217,7 @@ Our team includes the engineers who built:
 *  🚧 cabal-install and cross compilation
 *  🚧 retargetable GHC
 *  🚧 GHCup support
-* ⭕️ our own LTS releases
+* ⭕️ future work ???
 
 :::
 
@@ -245,13 +278,17 @@ See [#11179](https://github.com/haskell/cabal/pull/11179)
   * GHCup doesn't need to "know" about 3rdparty tools
 * Agda, Idris, stable-haskell GHC, purescript, ...
 
-## Deep dive: our own LTS releases
+## Deep dive: future work ???
 
-* longer support windows?
-* more backporting?
-* frequent bindist updates on existing platforms?
-  * rebuild against recent libraries
-  * update boot libraries?
+TODO
+
+## Get in touch
+
+* Github: https://github.com/stable-haskell
+* Discord: https://discord.gg/jWKhjjkSFn
+* Matrix: #stable-haskell:matrix.org
+
+We'd love to collaborate or hear your ideas!
 
 ## Questions?
 
