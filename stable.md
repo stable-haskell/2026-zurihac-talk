@@ -17,7 +17,7 @@ Have you ever wondered:
 * why are cross compilers so hard to use?
 * why is contributing to GHC so hard?
 
-## Why Stable Haskell? (pt. 2)
+## Our vision
 
 We want to create a Haskell experience that is:
 
@@ -217,7 +217,8 @@ Our team includes the engineers who built:
 *  🚧 cabal-install and cross compilation
 *  🚧 retargetable GHC
 *  🚧 GHCup support
-* ⭕️ future work ???
+* ⭕️ minimal stage1
+* ⭕️ bootstrap GHC with MicroHS
 
 :::
 
@@ -278,9 +279,14 @@ See [#11179](https://github.com/haskell/cabal/pull/11179)
   * GHCup doesn't need to "know" about 3rdparty tools
 * Agda, Idris, stable-haskell GHC, purescript, ...
 
-## Deep dive: future work ???
+## Things that need to be done
 
-TODO
+* easier bootstrapping
+  - minimal stage1
+  - MicroHS?
+* GHC compilation daemon
+  - alternative to jsem
+* native windows build
 
 ## Get in touch
 
@@ -289,8 +295,4 @@ TODO
 * Matrix: #stable-haskell:matrix.org
 
 We'd love to collaborate or hear your ideas!
-
-## Questions?
-
-Now is your chance...
 
