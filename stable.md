@@ -12,10 +12,14 @@
 
 Have you ever wondered:
 
+::: incremental
+
 * why can't I run `cabal install ghc`?
 * why can't I update to a new GHC and compile my existing codebase?
 * why are cross compilers so hard to use?
 * why is contributing to GHC so hard?
+
+:::
 
 ## Our vision
 
