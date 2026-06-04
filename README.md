@@ -2,7 +2,7 @@
 
 ## View the presentation
 
-Visit https://stable-haskell.github.io/
+Visit https://stable-haskell.github.io/2026-zurihac-talk/
 
 ## Building
 
