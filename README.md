@@ -1,5 +1,11 @@
 # Stable Haskell
 
+## View the presentation
+
+Visit https://stable-haskell.github.io/
+
+## Building
+
 Build via:
 
 ```sh

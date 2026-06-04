@@ -4,6 +4,10 @@
 
 # Introduction
 
+## Follow the presentation on your device
+
+![](qrcode.svg)
+
 ## Stable Haskell
 
 ![](turtle.jpg){#id .class height=500px}
