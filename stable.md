@@ -218,8 +218,6 @@ Our team includes the engineers who built and contributed to:
 
 ## What we are working on
 
-::: incremental
-
 * ✅ Migrating to github
 * ✅ Getting rid of Hadrian
 * ✅ RTS split
@@ -228,8 +226,6 @@ Our team includes the engineers who built and contributed to:
 *  🚧 GHCup support
 * ⭕️ minimal stage1
 * ⭕️ bootstrap GHC with MicroHS
-
-:::
 
 ## Deep dive: Getting rid of Hadrian ![](chain-saw.png){#id .class height=42px}
 
