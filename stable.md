@@ -197,7 +197,7 @@ Case study [Support statically linking executables properly](https://gitlab.hask
 
 ## Who is stable Haskell?
 
-Our team includes the engineers who built:
+Our team includes the engineers who built and contributed to:
 
 * GHC's Native Bignum Backend — Arbitrary-precision integers
 * AArch64 Native Code Generator — ARM support in GHC
