@@ -48,6 +48,7 @@ We want to create a Haskell experience that is:
   * we're also happy if someone else implements them
   * we engage rigorously with upstream projects
   * we're ok to deviate too
+  * communication and raising awareness
 
 # The GHC project
 
