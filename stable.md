@@ -145,7 +145,7 @@ Case study [Support statically linking executables properly](https://gitlab.hask
 - getting involved in releases is confusing
 - why are there no calls for help
   - FreeBSD?
-- but: some progress wrt release communication
+- but: some progress wrt [release communication](https://gitlab.haskell.org/ghc/ghc-hq/-/blob/main/release-management.mkd?ref_type=heads)
 
 ## Tight systems coupling
 
