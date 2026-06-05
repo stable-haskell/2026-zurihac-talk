@@ -247,6 +247,7 @@ Case study [Support statically linking executables properly](https://gitlab.hask
   - the rts is completely described by the cabal file
   - requires changes to cabal
   - GHC can look up the right RTS through the unit ID/package.conf
+* reinstallable RTS?
 
 ## Deep dive: cabal-install
 
