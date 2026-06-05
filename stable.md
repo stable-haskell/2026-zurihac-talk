@@ -182,6 +182,7 @@ Case study [Support statically linking executables properly](https://gitlab.hask
   - whole development process and tools focus on core developers
 - backporting is hard (dealing with flaky tests and spurious CI failures)
 - everything becomes quietly coupled, because there's no vision of the systems design
+  - need to get something done
 - innovation stalls, development slows down
 
 # The solution
