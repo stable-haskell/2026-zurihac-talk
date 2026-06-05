@@ -67,6 +67,8 @@ We want to create a Haskell experience that is:
   * the academic approach
   * GHC steering committe
 * a driver for innovation
+  * dependent haskell
+  * linear types
 * wide adoption in industry
 
 ## The dark side of GHC
