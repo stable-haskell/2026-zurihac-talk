@@ -42,6 +42,7 @@ We want to create a Haskell experience that is:
 ## What is Stable Haskell?
 
 * a fork of GHC and Cabal
+  * follows the latest LTS release (9.14 currently)
   * regular attempts at upstreaming changes
   * some changes are too radical to upstream (yet)
 * a project that tries to identify and solve the missing pieces
@@ -49,6 +50,19 @@ We want to create a Haskell experience that is:
   * we engage rigorously with upstream projects
   * we're ok to deviate too
   * communication and raising awareness
+
+## Who is stable Haskell?
+
+Our team includes the engineers who built and contributed to:
+
+* GHC's Native Bignum Backend — Arbitrary-precision integers
+* AArch64 Native Code Generator — ARM support in GHC
+* JavaScript Backend in GHC — Haskell in the browser
+* GHCup — The standard Haskell toolchain installer
+* haskell.nix — Reproducible Haskell builds with Nix
+* Cross-compilation support — Windows, iOS, Android targets
+* GHC's In-Memory Loader & Linker — Dynamic loading infrastructure
+* ...
 
 # The GHC project
 
@@ -197,26 +211,6 @@ Case study [Support statically linking executables properly](https://gitlab.hask
   - compiling your existing project against a new GHC should be trivial
   - => more "integration" testing
 * use a modern approach to hosting, CI and contribution
-
-## Who is stable Haskell?
-
-Our team includes the engineers who built and contributed to:
-
-* GHC's Native Bignum Backend — Arbitrary-precision integers
-* AArch64 Native Code Generator — ARM support in GHC
-* JavaScript Backend in GHC — Haskell in the browser
-* GHCup — The standard Haskell toolchain installer
-* haskell.nix — Reproducible Haskell builds with Nix
-* Cross-compilation support — Windows, iOS, Android targets
-* GHC's In-Memory Loader & Linker — Dynamic loading infrastructure
-* ...
-
-## What is stable haskell?
-
-* a fork of GHC and cabal
-* follows a specific release branch (9.14 currently)
-* we regularly upstream parts of our changes
-  - at least things we believe are upstreamable
 
 ## What we are working on
 
