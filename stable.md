@@ -231,6 +231,7 @@ Case study [Support statically linking executables properly](https://gitlab.hask
   * dealing with bindist creation
   * we plan to get rid of this too at some point
 * it's a bit slower than hadrian at the moment
+* todo: installing ghc from hackage?
 
 ## Deep dive: RTS split ✂
 
